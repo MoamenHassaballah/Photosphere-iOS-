@@ -7,23 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530D4B0F2983D4A500A69FD7 /* WallpaperDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D4B0E2983D4A500A69FD7 /* WallpaperDetailsViewController.swift */; };
+		5357C3832983F4250090FA44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5357C3822983F4250090FA44 /* Constants.swift */; };
+		5357C386298411170090FA44 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5357C385298411170090FA44 /* Extentions.swift */; };
 		53A139B6298158FA00176AAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A139B5298158FA00176AAE /* AppDelegate.swift */; };
 		53A139B8298158FA00176AAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A139B7298158FA00176AAE /* SceneDelegate.swift */; };
-		53A139BA298158FA00176AAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A139B9298158FA00176AAE /* ViewController.swift */; };
+		53A139BA298158FA00176AAE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A139B9298158FA00176AAE /* MainViewController.swift */; };
 		53A139BD298158FA00176AAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53A139BB298158FA00176AAE /* Main.storyboard */; };
 		53A139BF298158FB00176AAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A139BE298158FB00176AAE /* Assets.xcassets */; };
 		53A139C2298158FB00176AAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53A139C0298158FB00176AAE /* LaunchScreen.storyboard */; };
+		53B5096D298171F10059559E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 53B5096C298171F10059559E /* IQKeyboardManagerSwift */; };
+		53B50971298175030059559E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B50970298175030059559E /* Post.swift */; };
+		53B50973298175C50059559E /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B50972298175C50059559E /* Api.swift */; };
+		53B5097629817BA30059559E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 53B5097529817BA30059559E /* Alamofire */; };
+		53B5097B298189090059559E /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B50979298189090059559E /* ImageCell.swift */; };
+		53B5097C298189090059559E /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53B5097A298189090059559E /* ImageCell.xib */; };
+		53B5097F29818D0F0059559E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 53B5097E29818D0F0059559E /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		530D4B0E2983D4A500A69FD7 /* WallpaperDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperDetailsViewController.swift; sourceTree = "<group>"; };
+		5357C3822983F4250090FA44 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5357C385298411170090FA44 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		53A139B2298158FA00176AAE /* Photosphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photosphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A139B5298158FA00176AAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53A139B7298158FA00176AAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		53A139B9298158FA00176AAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		53A139B9298158FA00176AAE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		53A139BC298158FA00176AAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		53A139BE298158FB00176AAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53A139C1298158FB00176AAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53A139C3298158FB00176AAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53B50970298175030059559E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		53B50972298175C50059559E /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		53B50979298189090059559E /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		53B5097A298189090059559E /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +48,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53B5097F29818D0F0059559E /* Kingfisher in Frameworks */,
+				53B5096D298171F10059559E /* IQKeyboardManagerSwift in Frameworks */,
+				53B5097629817BA30059559E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5357C384298410F90090FA44 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				5357C3822983F4250090FA44 /* Constants.swift */,
+				5357C385298411170090FA44 /* Extentions.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		53A139A9298158FA00176AAE = {
 			isa = PBXGroup;
 			children = (
 				53A139B4298158FA00176AAE /* Photosphere */,
 				53A139B3298158FA00176AAE /* Products */,
+				66E6060145096F1F7970FF55 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +88,50 @@
 			children = (
 				53A139B5298158FA00176AAE /* AppDelegate.swift */,
 				53A139B7298158FA00176AAE /* SceneDelegate.swift */,
-				53A139B9298158FA00176AAE /* ViewController.swift */,
-				53A139BB298158FA00176AAE /* Main.storyboard */,
+				53B5096F298174ED0059559E /* Models */,
+				53B5096A29816B8C0059559E /* controller */,
+				53A139C92981593200176AAE /* view */,
 				53A139BE298158FB00176AAE /* Assets.xcassets */,
 				53A139C0298158FB00176AAE /* LaunchScreen.storyboard */,
 				53A139C3298158FB00176AAE /* Info.plist */,
+				5357C384298410F90090FA44 /* utils */,
 			);
 			path = Photosphere;
+			sourceTree = "<group>";
+		};
+		53A139C92981593200176AAE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				53A139BB298158FA00176AAE /* Main.storyboard */,
+				53B5097A298189090059559E /* ImageCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		53B5096A29816B8C0059559E /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				53A139B9298158FA00176AAE /* MainViewController.swift */,
+				53B50979298189090059559E /* ImageCell.swift */,
+				530D4B0E2983D4A500A69FD7 /* WallpaperDetailsViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		53B5096F298174ED0059559E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				53B50970298175030059559E /* Post.swift */,
+				53B50972298175C50059559E /* Api.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		66E6060145096F1F7970FF55 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +150,11 @@
 			dependencies = (
 			);
 			name = Photosphere;
+			packageProductDependencies = (
+				53B5096C298171F10059559E /* IQKeyboardManagerSwift */,
+				53B5097529817BA30059559E /* Alamofire */,
+				53B5097E29818D0F0059559E /* Kingfisher */,
+			);
 			productName = Photosphere;
 			productReference = 53A139B2298158FA00176AAE /* Photosphere.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +183,11 @@
 				Base,
 			);
 			mainGroup = 53A139A9298158FA00176AAE;
+			packageReferences = (
+				53B5096B298171F10059559E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				53B5097429817BA30059559E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				53B5097D29818D0F0059559E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 53A139B3298158FA00176AAE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53A139C2298158FB00176AAE /* LaunchScreen.storyboard in Resources */,
+				53B5097C298189090059559E /* ImageCell.xib in Resources */,
 				53A139BF298158FB00176AAE /* Assets.xcassets in Resources */,
 				53A139BD298158FA00176AAE /* Main.storyboard in Resources */,
 			);
@@ -138,9 +216,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A139BA298158FA00176AAE /* ViewController.swift in Sources */,
+				53B50971298175030059559E /* Post.swift in Sources */,
+				53A139BA298158FA00176AAE /* MainViewController.swift in Sources */,
 				53A139B6298158FA00176AAE /* AppDelegate.swift in Sources */,
+				53B50973298175C50059559E /* Api.swift in Sources */,
+				530D4B0F2983D4A500A69FD7 /* WallpaperDetailsViewController.swift in Sources */,
 				53A139B8298158FA00176AAE /* SceneDelegate.swift in Sources */,
+				53B5097B298189090059559E /* ImageCell.swift in Sources */,
+				5357C3832983F4250090FA44 /* Constants.swift in Sources */,
+				5357C386298411170090FA44 /* Extentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +440,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		53B5096B298171F10059559E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
+		53B5097429817BA30059559E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+		53B5097D29818D0F0059559E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		53B5096C298171F10059559E /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53B5096B298171F10059559E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		53B5097529817BA30059559E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53B5097429817BA30059559E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		53B5097E29818D0F0059559E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53B5097D29818D0F0059559E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 53A139AA298158FA00176AAE /* Project object */;
 }
