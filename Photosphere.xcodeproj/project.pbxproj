@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		530D4B0F2983D4A500A69FD7 /* WallpaperDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530D4B0E2983D4A500A69FD7 /* WallpaperDetailsViewController.swift */; };
+		531ECBC429FFDB05004133D2 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531ECBC329FFDB05004133D2 /* ApiManager.swift */; };
+		531ECBC629FFDEBC004133D2 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531ECBC529FFDEBC004133D2 /* PhotoModel.swift */; };
 		5357C3832983F4250090FA44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5357C3822983F4250090FA44 /* Constants.swift */; };
 		5357C386298411170090FA44 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5357C385298411170090FA44 /* Extentions.swift */; };
 		53A139B6298158FA00176AAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A139B5298158FA00176AAE /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		530D4B0E2983D4A500A69FD7 /* WallpaperDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperDetailsViewController.swift; sourceTree = "<group>"; };
+		531ECBC329FFDB05004133D2 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		531ECBC529FFDEBC004133D2 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		5357C3822983F4250090FA44 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5357C385298411170090FA44 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		53A139B2298158FA00176AAE /* Photosphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photosphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +127,8 @@
 			children = (
 				53B50970298175030059559E /* Post.swift */,
 				53B50972298175C50059559E /* Api.swift */,
+				531ECBC329FFDB05004133D2 /* ApiManager.swift */,
+				531ECBC529FFDEBC004133D2 /* PhotoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +229,8 @@
 				530D4B0F2983D4A500A69FD7 /* WallpaperDetailsViewController.swift in Sources */,
 				53A139B8298158FA00176AAE /* SceneDelegate.swift in Sources */,
 				53B5097B298189090059559E /* ImageCell.swift in Sources */,
+				531ECBC429FFDB05004133D2 /* ApiManager.swift in Sources */,
+				531ECBC629FFDEBC004133D2 /* PhotoModel.swift in Sources */,
 				5357C3832983F4250090FA44 /* Constants.swift in Sources */,
 				5357C386298411170090FA44 /* Extentions.swift in Sources */,
 			);

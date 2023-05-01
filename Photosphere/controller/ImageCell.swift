@@ -19,8 +19,9 @@ class ImageCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     
-//        imageFrame.layer.cornerRadius = 10
-        imageFrame.setShadow(opacity: 0.4)
+        wallpaper.layer.cornerRadius = 10
+        wallpaper.layer.masksToBounds = true
+//        imageFrame.setShadow(opacity: 0.4)
         
     }
     
