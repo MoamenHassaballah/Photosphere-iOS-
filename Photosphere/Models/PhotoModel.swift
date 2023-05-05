@@ -14,17 +14,28 @@ struct PhotoModel : Codable{
     let height: Int
     let alt_description: String?
     let urls: UrlsList
-    let links: DownloadLink
+    let links: Links
+    let user: User
 }
 
 struct UrlsList : Codable{
     
     let raw:String
     let full:String
+    let small:String
     let thumb:String
     
 }
 
-struct DownloadLink : Codable {
-    let download: String
+struct Links : Codable {
+    let download: String?
+    let html: String
 }
+
+struct User: Codable {
+    let username: String
+    let name: String
+    let links: Links
+}
+
+

@@ -25,6 +25,12 @@ class WallpaperDetailsViewController : UIViewController{
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var usernameLable: UILabel!
+    
+    @IBOutlet weak var unsplashLable: UILabel!
+    
+    let referal = "?utm_source=Photosphere&utm_medium=referral"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +38,37 @@ class WallpaperDetailsViewController : UIViewController{
         print("Link: \(String(describing: imageWallpaper))")
         if let photo = imageWallpaper {
             loadingIndicator.startAnimating()
-            let imageUrl = URL(string: photo.urls.full)
+            let imageUrl = URL(string: photo.urls.small)
             wallpaperImageView.kf.setImage(with: imageUrl){ result in
                 print("Image loaded: \(result)")
                 self.loadingIndicator.stopAnimating()
                 if photo.width > photo.height {
                     self.wallpaperImageView.contentMode = .scaleAspectFit
                 }
+                
+                //update quality
+                let qeue = DispatchQueue(label: "loadimage")
+                qeue.async {
+                    let rawUrl = URL(string: photo.urls.raw)
+                    KingfisherManager.shared.retrieveImage(with: rawUrl!) { result in
+                        // Do something with `result`
+                        switch result {
+                            case .success(let value):
+                            self.wallpaperImageView.image = value.image
+
+                            case .failure(let error):
+                                print(error) // The error happens
+                            }
+                    }
+                }
             }
             
             
         }
+        
+        
+        usernameLable.text = imageWallpaper?.user.name
+    
         
         cornerView.layer.cornerRadius = 10
         closeBtn.layer.cornerRadius = 20
@@ -51,11 +77,15 @@ class WallpaperDetailsViewController : UIViewController{
         favBtn.layer.masksToBounds = true
         
         
-        shadowVIew.setShadow(radius: 30)
+        shadowVIew.layer.cornerRadius = 5
+        shadowVIew.layer.masksToBounds = true
         
         loadingIndicator.setShadow()
         loadingIndicator.layer.cornerRadius = 20
 //        loadingIndicator.stopAnimating()
+        
+        setTapGestureForLable(lable: usernameLable, function: #selector(onUsernameClicked))
+        setTapGestureForLable(lable: unsplashLable, function: #selector(onUnsplashClicked))
         
         
         
@@ -75,7 +105,7 @@ class WallpaperDetailsViewController : UIViewController{
 
             loadingIndicator.startAnimating()
             let downloader = ImageDownloader.default
-            let downloadUrl = URL(string: photo.urls.raw)
+            let downloadUrl = URL(string: photo.links.download!)
             downloader.downloadImage(with: downloadUrl!){ result in
                 switch result {
                 case .success(let value):
@@ -90,6 +120,24 @@ class WallpaperDetailsViewController : UIViewController{
         }
         
         
+    }
+    
+    func setTapGestureForLable(lable: UILabel, function: Selector){
+        let tapGesture = UITapGestureRecognizer(target: self, action: function)
+        lable.isUserInteractionEnabled = true
+        lable.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func onUsernameClicked(){
+        if let url = URL(string: "\(imageWallpaper?.user.links.html ?? "https://unsplash.com/")\(referal)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @objc func onUnsplashClicked(){
+        if let url = URL(string: "https://unsplash.com/\(referal)") {
+            UIApplication.shared.open(url)
+        }
     }
     
 }

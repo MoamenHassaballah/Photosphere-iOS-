@@ -9,14 +9,14 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-class MainViewController: UIViewController, ApiResultDelegate {
-    
-    
+class MainViewController: UIViewController, ApiResultDelegate, UITextFieldDelegate {
+
 
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var gridView: UICollectionView!
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var wallpapers:[PhotoModel] = [
 //        "https://images.unsplash.com/photo-1674380394920-d3625d55d7c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=985&q=80",
@@ -30,6 +30,7 @@ class MainViewController: UIViewController, ApiResultDelegate {
     private var selectedWallpaper:PhotoModel?
     
     private let apiManager = ApiManager()
+    private var page = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +40,23 @@ class MainViewController: UIViewController, ApiResultDelegate {
 //        wallpapersTableView.register(UINib(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "imagecell")
 //
         
-        apiManager.apiResultDelegate = self
-        apiManager.getHomePhotos(page: 1)
         
         
-        gridView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+    
+        searchTextField.delegate = self
+        
+        
         gridView.collectionViewLayout = UICollectionViewFlowLayout()
         gridView.dataSource = self
-        gridView.register(UINib(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "imagecell")
+        gridView.register(UINib(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: K.cellIdentifier.IMAGE_CELL)
         gridView.delegate  = self
-        gridView.layer.masksToBounds = false
         gridView.allowsMultipleSelection = false
+        gridView.showsVerticalScrollIndicator = false
+        
+        
+        loadingIndicator.startAnimating()
+        apiManager.apiResultDelegate = self
+        apiManager.getHomePhotos(page: page)
 //        gridView.translatesAutoresizingMaskIntoConstraints = false
 //        gridView.layoutIfNeeded()
         
@@ -67,6 +74,20 @@ class MainViewController: UIViewController, ApiResultDelegate {
         searchTextField.isHidden = !searchTextField.isHidden
     }
     
+    @IBAction func openCollections(_ sender: Any) {
+        self.performSegue(withIdentifier: K.segues.mainToCollections, sender: self)
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let searchText = textField.text
+        print("Search: \(searchText!)")
+        self.performSegue(withIdentifier: K.segues.mainToSearch, sender: self)
+        
+        return true
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.segues.mainToWallpaper {
@@ -75,6 +96,10 @@ class MainViewController: UIViewController, ApiResultDelegate {
                 distination.imageWallpaper = selectedWallpaper
             }
             
+        }else if segue.identifier == K.segues.mainToSearch {
+            if let distination = segue.destination as? SearchViewController{
+                distination.query = searchTextField.text!
+            }
         }
     }
     
@@ -107,14 +132,26 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let tableCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imagecell", for: indexPath) as? ImageCell
+        let tableCell = collectionView.dequeueReusableCell(withReuseIdentifier: K.cellIdentifier.IMAGE_CELL, for: indexPath) as? ImageCell
         if let cell = tableCell {
             let url = URL(string:  wallpapers[indexPath.row].urls.thumb)
 //            let processor = RoundCornerImageProcessor(cornerRadius: 100)
 //            cell.wallpaper.kf.setImage(with: url, options: [.processor(processor)])
             cell.wallpaper.kf.setImage(with: url){ result in
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imagecell", for: indexPath)
-                print("Size: \(cell.frame.size)")
+                let qeue = DispatchQueue(label: "loadimage")
+                qeue.async {
+                    let smallUrl = URL(string:  self.wallpapers[indexPath.row].urls.small)
+                    KingfisherManager.shared.retrieveImage(with: smallUrl!) { result in
+                        // Do something with `result`
+                        switch result {
+                            case .success(let value):
+                            tableCell?.wallpaper.image = value.image
+
+                            case .failure(let error):
+                                print(error) // The error happens
+                            }
+                    }
+                }
             }
         }
         return tableCell!
@@ -126,15 +163,16 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let photo = wallpapers[indexPath.row]
+//        let photo = wallpapers[indexPath.row]
 
         let yourWidth = collectionView.frame.width / 2
-        var  yourHeight = 0.0
-        if (photo.width > photo.height){
-            yourHeight =  yourWidth * 0.5
-        } else {
-            yourHeight =  yourWidth * 1.5
-        }
+        let yourHeight =  yourWidth * 1.5
+//        var  yourHeight = 0.0
+//        if (photo.width > photo.height){
+//            yourHeight =  yourWidth * 0.5
+//        } else {
+//            yourHeight =  yourWidth * 1.5
+//        }
 
 //        print("frame: \(collectionView.frame.width), width: \(yourWidth), height:\(yourHeight)")
         return CGSize(width: yourWidth, height: yourHeight)
@@ -153,13 +191,37 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return 0
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
+        if bottomEdge >= scrollView.contentSize.height {
+            if !loadingIndicator.isAnimating {
+                loadingIndicator.startAnimating()
+                page += 1
+                apiManager.getHomePhotos(page: page)
+            }
+        }
+    }
+    
     
     func onPhotosLoaded(photosList: [PhotoModel]) {
         wallpapers.append(contentsOf: photosList)
+        DispatchQueue.main.async {
+            self.gridView.reloadData()
+            self.loadingIndicator.stopAnimating()
+        }
+    }
+    
+    func onSearchPhoto(searchModel: SearchModel) {
+        
+    }
+    
+    func onCategoriesLoaded(categoriesList: [CategoryModel]) {
+        
     }
     
     func onError(errorMessage: String) {
         print("An Error occured: \(errorMessage)")
+
     }
     
 }
