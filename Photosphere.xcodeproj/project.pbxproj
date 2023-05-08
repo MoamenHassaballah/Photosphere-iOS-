@@ -32,6 +32,7 @@
 		53D1634D2A01A8AA00CF530A /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D1634C2A01A8AA00CF530A /* CategoryModel.swift */; };
 		53F16E752A00303900BA2987 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F16E742A00303900BA2987 /* SearchViewController.swift */; };
 		53F16E762A00330400BA2987 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53A139BB298158FA00176AAE /* Main.storyboard */; };
+		53F432282A09741C0001063C /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F432272A09741C0001063C /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		53D163492A01A24000CF530A /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		53D1634C2A01A8AA00CF530A /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		53F16E742A00303900BA2987 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		53F432272A09741C0001063C /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				53D163422A004FE800CF530A /* CollectionsViewController.swift */,
 				53D163482A01A24000CF530A /* CategoryCell.swift */,
 				5383C6C22A05572F0002AF76 /* CategoryViewController.swift */,
+				53F432272A09741C0001063C /* FavoritesViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				530D4B0F2983D4A500A69FD7 /* WallpaperDetailsViewController.swift in Sources */,
 				53A139B8298158FA00176AAE /* SceneDelegate.swift in Sources */,
 				53F16E752A00303900BA2987 /* SearchViewController.swift in Sources */,
+				53F432282A09741C0001063C /* FavoritesViewController.swift in Sources */,
 				53B5097B298189090059559E /* ImageCell.swift in Sources */,
 				531ECBC429FFDB05004133D2 /* ApiManager.swift in Sources */,
 				531ECBC629FFDEBC004133D2 /* PhotoModel.swift in Sources */,

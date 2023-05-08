@@ -53,6 +53,9 @@
                                                                         <rect key="frame" x="98" y="3.6666666666666679" width="49" height="36"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="favorites"/>
+                                                                        <connections>
+                                                                            <segue destination="BVm-su-1LR" kind="presentation" identifier="mainToFav" id="Sfu-fV-5U9"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V27-Le-foa" userLabel="search">
                                                                         <rect key="frame" x="147" y="0.0" width="53" height="43"/>
@@ -282,7 +285,8 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULN-1N-rns">
                                                                 <rect key="frame" x="5" y="5" width="40" height="40"/>
                                                                 <color key="backgroundColor" name="offwhite"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="close:" destination="sdP-2L-PDt" eventType="touchUpInside" id="72i-XK-K0R"/>
                                                                 </connections>
@@ -312,10 +316,11 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfG-TE-Thq">
                                                         <rect key="frame" x="324" y="0.0" width="50" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4L-uR-EKK">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4L-uR-EKK">
                                                                 <rect key="frame" x="5" y="5" width="40" height="40"/>
                                                                 <color key="backgroundColor" name="offwhite"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="favorites"/>
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="addToFav:" destination="sdP-2L-PDt" eventType="touchUpInside" id="DlH-Gh-yl7"/>
                                                                 </connections>
@@ -399,6 +404,7 @@
                         <outlet property="closeBtn" destination="qLx-KE-QpE" id="Xa0-Lf-8HZ"/>
                         <outlet property="cornerView" destination="LDG-mF-OzK" id="kMN-Kb-mcI"/>
                         <outlet property="favBtn" destination="hfG-TE-Thq" id="qON-EL-ZxQ"/>
+                        <outlet property="favoriteBtn" destination="y4L-uR-EKK" id="0Uw-k2-e2z"/>
                         <outlet property="loadingIndicator" destination="21v-Ir-OuJ" id="o92-0x-tSL"/>
                         <outlet property="shadowVIew" destination="Fc3-eD-OtJ" id="k1e-jc-KVK"/>
                         <outlet property="unsplashLable" destination="ifX-cE-1wy" id="YHb-Bs-kPt"/>
@@ -504,14 +510,114 @@
             </objects>
             <point key="canvasLocation" x="2083" y="521"/>
         </scene>
+        <!--Favorites View Controller-->
+        <scene sceneID="yAA-YA-BnB">
+            <objects>
+                <viewController id="BVm-su-1LR" userLabel="Favorites View Controller" customClass="FavoritesViewController" customModule="Photosphere" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ofn-1t-YPL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wak-YR-fwL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJf-x2-n6h">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6z-WK-64e">
+                                                <rect key="frame" x="19.999999999999996" y="13" width="49.666666666666657" height="34.333333333333336"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system">
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="goBack:" destination="BVm-su-1LR" eventType="touchUpInside" id="FQd-nX-kfd"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-eM-u5X">
+                                                <rect key="frame" x="133.66666666666669" y="6.6666666666666679" width="146.66666666666669" height="47"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH6-Ra-0iE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="146.66666666666666" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOs-tw-yU3">
+                                                        <rect key="frame" x="31" y="29" width="85" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="SKq-eM-u5X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x6z-WK-64e" secondAttribute="trailing" constant="8" symbolic="YES" id="Ezi-ag-rnE"/>
+                                            <constraint firstAttribute="height" constant="60" id="GH9-Ze-Uxy"/>
+                                            <constraint firstItem="SKq-eM-u5X" firstAttribute="centerY" secondItem="dJf-x2-n6h" secondAttribute="centerY" id="Kpc-i9-Ncw"/>
+                                            <constraint firstItem="x6z-WK-64e" firstAttribute="centerY" secondItem="dJf-x2-n6h" secondAttribute="centerY" id="dJ4-HW-Sb1"/>
+                                            <constraint firstItem="x6z-WK-64e" firstAttribute="leading" secondItem="dJf-x2-n6h" secondAttribute="leading" constant="20" id="dS7-tX-egU"/>
+                                            <constraint firstItem="SKq-eM-u5X" firstAttribute="centerX" secondItem="dJf-x2-n6h" secondAttribute="centerX" id="hSk-UF-svc"/>
+                                        </constraints>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hUi-bo-rJ8">
+                                        <rect key="frame" x="0.0" y="60" width="414" height="656"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Eyw-1d-2bh">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="dJf-x2-n6h" secondAttribute="trailing" id="dfu-hZ-jtw"/>
+                                    <constraint firstItem="dJf-x2-n6h" firstAttribute="leading" secondItem="Wak-YR-fwL" secondAttribute="leading" id="t8e-KG-mQw"/>
+                                </constraints>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="oAc-je-S5O">
+                                <rect key="frame" x="82" y="233" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="aDk-8q-b0Y"/>
+                                    <constraint firstAttribute="width" constant="250" id="cBI-2s-2Vj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2eM-Fw-Jo9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oAc-je-S5O" firstAttribute="centerY" secondItem="Ofn-1t-YPL" secondAttribute="centerY" id="3hk-JZ-XRz"/>
+                            <constraint firstItem="2eM-Fw-Jo9" firstAttribute="bottom" secondItem="Wak-YR-fwL" secondAttribute="bottom" id="4F5-Ad-KoL"/>
+                            <constraint firstItem="oAc-je-S5O" firstAttribute="centerX" secondItem="Ofn-1t-YPL" secondAttribute="centerX" id="Hzi-KJ-kHg"/>
+                            <constraint firstItem="Wak-YR-fwL" firstAttribute="top" secondItem="2eM-Fw-Jo9" secondAttribute="top" id="JVh-7C-cKv"/>
+                            <constraint firstItem="Wak-YR-fwL" firstAttribute="trailing" secondItem="2eM-Fw-Jo9" secondAttribute="trailing" id="V48-9V-TLL"/>
+                            <constraint firstItem="Wak-YR-fwL" firstAttribute="leading" secondItem="2eM-Fw-Jo9" secondAttribute="leading" id="ub7-Wr-Vce"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="no6-Pn-pGS"/>
+                    <connections>
+                        <outlet property="collectionView" destination="hUi-bo-rJ8" id="eZj-SS-Oah"/>
+                        <outlet property="emptyImage" destination="oAc-je-S5O" id="KOA-PA-TLq"/>
+                        <outlet property="photosNumber" destination="fOs-tw-yU3" id="BAj-vW-N6h"/>
+                        <segue destination="sdP-2L-PDt" kind="presentation" identifier="favToDetails" modalPresentationStyle="fullScreen" id="K1m-n3-eiS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iNQ-cb-O0b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182.608695652174" y="1272.554347826087"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xOP-Z5-fJT"/>
+        <segue reference="K1m-n3-eiS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="close" width="22" height="22"/>
+        <image name="empty" width="2000" height="2000"/>
         <image name="favorites" width="25" height="22"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="search" width="29" height="29"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColor">

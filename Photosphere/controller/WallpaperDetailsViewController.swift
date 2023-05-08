@@ -22,6 +22,7 @@ class WallpaperDetailsViewController : UIViewController{
     @IBOutlet weak var closeBtn: UIView!
     
     @IBOutlet weak var favBtn: UIView!
+    @IBOutlet weak var favoriteBtn: UIButton!
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
@@ -31,16 +32,18 @@ class WallpaperDetailsViewController : UIViewController{
     
     let referal = "?utm_source=Photosphere&utm_medium=referral"
     
+    var favList: [PhotoModel]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Link: \(String(describing: imageWallpaper))")
+//        print("Link: \(String(describing: imageWallpaper))")
         if let photo = imageWallpaper {
             loadingIndicator.startAnimating()
             let imageUrl = URL(string: photo.urls.small)
             wallpaperImageView.kf.setImage(with: imageUrl){ result in
-                print("Image loaded: \(result)")
+//                print("Image loaded: \(result)")
                 self.loadingIndicator.stopAnimating()
                 if photo.width > photo.height {
                     self.wallpaperImageView.contentMode = .scaleAspectFit
@@ -67,6 +70,12 @@ class WallpaperDetailsViewController : UIViewController{
         }
         
         
+        if let fav = UserDefaults.standard.codableObject(dataType: [PhotoModel].self, key: "fav"){
+            favList = fav
+            print("List Count: \(favList?.count ?? -1)")
+            setFavButton()
+        }
+        
         usernameLable.text = imageWallpaper?.user.name
     
         
@@ -87,8 +96,6 @@ class WallpaperDetailsViewController : UIViewController{
         setTapGestureForLable(lable: usernameLable, function: #selector(onUsernameClicked))
         setTapGestureForLable(lable: unsplashLable, function: #selector(onUnsplashClicked))
         
-        
-        
     }
     
     @IBAction func close(_ sender: Any) {
@@ -97,6 +104,26 @@ class WallpaperDetailsViewController : UIViewController{
     
     
     @IBAction func addToFav(_ sender: Any) {
+        print("Is Fav: \(isWallpaperFav())")
+        if isWallpaperFav(){
+            if var fav = favList{
+                fav.removeAll { photo in
+                    photo.id == imageWallpaper?.id
+                }
+                favList =  UserDefaults.standard.setCodableObject(fav, forKey: "fav")
+                setFavButton()
+            }
+        }else {
+            print("Is nil: \(favList == nil)")
+            if favList == nil {
+                favList = []
+            }
+            favList?.append(imageWallpaper!)
+            print("Added: \(favList?.count ?? -1)")
+            favList = UserDefaults.standard.setCodableObject(favList, forKey: "fav")
+            setFavButton()
+        }
+        UserDefaults.standard.synchronize()
     }
     
     
@@ -137,6 +164,31 @@ class WallpaperDetailsViewController : UIViewController{
     @objc func onUnsplashClicked(){
         if let url = URL(string: "https://unsplash.com/\(referal)") {
             UIApplication.shared.open(url)
+        }
+    }
+    
+    func setFavButton(){
+        if isWallpaperFav(){
+            favoriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }else {
+            favoriteBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        favoriteBtn.reloadInputViews()
+    }
+    
+    func isWallpaperFav() -> Bool{
+        if let fav = favList{
+            let isExists =  fav.contains(where: { photo in
+                photo.id == imageWallpaper?.id
+            })
+            
+            if isExists{
+                return true
+            }else {
+                return false
+            }
+        }else {
+            return false
         }
     }
     
