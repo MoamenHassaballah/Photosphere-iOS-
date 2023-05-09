@@ -2,7 +2,7 @@
 Wallpaper app that uses unsplash API to retrieve images
 
 ## App in action
-https://github.com/MoamenHassaballah/Photosphere-iOS-/assets/43247788/2c840b6d-2094-4e8c-9bed-d37d2a56654e
+![Photosphere Review](https://github.com/MoamenHassaballah/Photosphere-iOS-/assets/43247788/1761c082-a62f-4388-9d58-ba0bccf05a5d)
 
 
 
